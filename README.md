@@ -1,5 +1,5 @@
 # programas-para-predecir-COVID-19
-The purpose of this repository is to make public the programs used to adjust COVID-19 mortality data in Argentina.
+The purpose of this repository is to make public the programs used to adjust COVID-19 mortality data in Argentina and other Southern Hemisphere countries.
 The object is to make the code (Python 3.7) public to allow verification of the capacity of the programs and test suite to ensure the correction of errors and the possibility of improvements.
 The program for the adjustment proposed in the article was generated:
 https://www.medrxiv.org/content/10.1101/2020.03.27.20043752v1
@@ -9,7 +9,7 @@ https://covid19.healthdata.org/united-states-of-america
 METHOD
 Raw mortality data from COVID-19 (deaths per day) are adjusted with a Gaussian integral function (func). The function was obtained by symbolically integrating (Euler) the Gaussian function and adding an integration constant (norm).
 Data (Y) is entered from CSV files as deaths per day that are added to obtain the sum of deaths for that day.
-Data (X) is entered as the number of days from an initial date (March 9 for Argentina) in which there were still no deaths.
+Data (X) is entered as the number of days from an initial date (22nd january) in which there were still no deaths.
 The program generates an adjustment graph and prediction of the evolution of the total number of deaths.
 It also generates a graph that shows the number of deaths per day to detect the moment of maximum mortality and graphs the experimental data. As can be seen, the daily death toll presents a lot of sampling variation. Initially, the daily death toll was adjusted and gives similar results but with worse statistics given the variation.
 In addition, the number of infected persons is predicted by dividing the number of deaths with the mortality rate. Two scenarios are proposed: a) low mortality (South Korea) and high mortality (Italy).
@@ -18,17 +18,16 @@ The written output contains the input details and relevant parameters:
 - Day of maximum number of deaths
 - Zero mortality day
 - Maximum and minimum number of total infected.
-The program: “Adjust COVID M with Gaussian integral ARG” was written in the IDE Spyder launched by Anaconda. The file: Mpordia.csv is used with data obtained by reading (¡) the daily reports of the nation's Ministry of Health (Argentina).
+The programs: ej: “Adjust COVID M with Gaussian integral ARG 3.1” was written in the IDE Spyder launched by Anaconda. The file: ArgentinaJH.csv is used with data obtained from https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv#L17.
 
 TEST SUITE
 Since on the site:
 https://covid19.healthdata.org/italy
 The adjustments for different countries (and states of the USA) are shown. The results for Italy were used to test the program because the peak of deaths per day has passed, so it is possible to check the predictive capacity of the adjustment.
-It is tested with two data files. One contains all the data ((ItaliaMd.csv, after the peak of deaths per day) and the other (ItaliaMd35.csv) contains the same amount of data as there is in Argentina.
-The data was manually obtained from the site: https://covid19.healthdata.org/italy.
+It is tested with two data files. One contains all the data ((ItaliaMd.csv, after the peak of deaths per day) and the other (italiaJH.csv) contains the same amount of data as there is in Argentina.
+The data was manually obtained from the site: https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv#L17.
 The heart code is the same, changing the graphics signs and the start day, etc.
 It is called: “Fit COVID M with Gaussian integral ITALY”
-
 USE
 It is possible to use the program for any country or jurisdiction for which there are data on deaths per day.
 
